@@ -101,7 +101,11 @@ async def on_guild_remove(guild):
 @client.event
 async def on_ready():
   change_status.start()
-  print("Hafize Ana Botu calisiyor ")
+  for guild in client.guilds:
+        if not models.check_server(guild.id):
+            models.add_server(guild.id, guild.owner, guild.owner_id, guild.name, guild.member_count)
+        else:
+            print(f"Server already exists id: {guild.id}")
 
 
 @tasks.loop(minutes=60)

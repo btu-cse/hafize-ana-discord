@@ -6,6 +6,7 @@ class Models:
         self.cursor = self.db.cursor()
     
     def create_table(self):
+        """Creates table if not exists"""
         self.cursor.execute('''
         CREATE TABLE IF NOT EXISTS servers (
             id INTEGER PRIMARY KEY AUTOINCREMENT, 
@@ -19,6 +20,7 @@ class Models:
         self.db.commit()
     
     def add_server(self, server_id, server_owner,server_owner_id, server_name, member_count):
+        """Adds server to database"""
         self.create_table()
         self.cursor.execute('''
         INSERT INTO servers (server_id, server_owner, server_owner_id, server_name, member_count) VALUES (?, ?, ?, ?, ?)
@@ -26,13 +28,22 @@ class Models:
         self.db.commit()
 
     def get_all_server(self):
+        """Returns all servers"""
         self.cursor.execute('''
         SELECT * FROM servers
         ''')
         return self.cursor.fetchall()
     
     def delete_server(self, server_id):
+        """Deletes server from database"""
         self.cursor.execute('''
         DELETE FROM servers WHERE server_id = ?
         ''', (server_id,))
         self.db.commit()
+    
+    def check_server(self, server_id):
+        """Checks if server exists"""
+        self.cursor.execute('''
+        SELECT * FROM servers WHERE server_id = ?
+        ''', (server_id,))
+        return self.cursor.fetchone()
