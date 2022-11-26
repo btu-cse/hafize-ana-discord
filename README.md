@@ -22,3 +22,11 @@
 
 
 [Botu Discord Sunucusuna Bağlama Linki](https://discord.com/api/oauth2/authorize?client_id=1026865227377147985&permissions=8&scope=bot)
+
+🎉Contributors:
+
+[Sefa Eren](https://github.com/riatorz)
+
+[Arda Aydın Kılınç](https://github.com/adraarda23)
+
+[Samet Gümüş](https://github.com/sagumax404)
